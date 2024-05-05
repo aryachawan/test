@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas Neue">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Signika">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<style>
+    body {
+        background-color: black;
+    }
+</style>
+
+<body>
+    <div class="navbar">
+        <form action="/" method="post">
+            <a id="title">Jerseystore</a>
+            <a href="/"><img src="/static/icons/Home.png"></a>
+            <a href="/shop/{{id}}"><img src="/static/icons/Online Store.png"></a>
+            <a href="/cart/{{id}}"><img src="/static/icons/Shopping Cart.png"></a>
+            <a id="imghref" href="/login-signup"><img src="/static/icons/Male User.png"></a>
+        </form>
+    </div>
+    <div class="mobilenavbar">
+        <p>Jerseystore</p>
+        <button id="navbtn"><img src="/static/icons/News Feed.png"></button>
+    </div>
+    <div class="slidediv">
+        <form action="/" method="post">
+            <div class="flexdiv">
+                <a href="/"><img src="/static/icons/Home.png"></a>
+                <p>Home</p>
+            </div>
+            <div class="flexdiv">
+                <a href="/shop/{{id}}"><img src="/static/icons/Online Store.png"></a>
+                <p>Shop</p>
+            </div>
+            <div class="flexdiv">
+                <a href="/cart/{{id}}"><img src="/static/icons/Shopping Cart.png"></a>
+                <p>Cart</p>
+            </div>
+            <div class="flexdiv">
+                <a id="imghref" href="/login-signup"><img src="/static/icons/Male User.png"></a>
+                <p>Arya Chawan</p>
+            </div>
+        </form>
+    </div>
+    <div class="bannerdiv">
+        <p>Every jersey tells a story</p>
+    </div>
+    <div class="aboutdiv">
+        <div class="lhs">
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="carousel-item">
+                        <img src="/static/carousel/ronaldo.jpg">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/static/carousel/messi.jpg">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/static/carousel/kholi2.jpg">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/static/carousel/rma2.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rhs">
+            <p>Jerseys symbolize more than just a uniform for athletes they embody a sense of identity, belonging, and
+                pride. Each jersey carries the weight of history, representing the teams and the legacies they uphold.
+                Athletes donning these jerseys become beacons of hope and inspiration, rallying not just their teammates
+                but entire communities behind them. In the realm of sports, jerseys serve as a visual representation of
+                the dedication, sacrifice, and perseverance that athletes endure in their quest for glory. They
+                transform ordinary individuals into icons, immortalizing their triumphs and tribulations in the archives
+                of sporting history.</p>
+        </div>
+    </div>
+    <p id="passiontitle">Unmatched passion</p>
+    <div class="aboutdiv2">
+        <img src="/static/carousel/quote1.jpg">
+        <img src="/static/carousel/quote2.png">
+    </div>
+    <div class="footer">
+        <div class="innerfooter">
+            <p>Check out our brand-new jerseys! They're stylish, high-quality, and perfect for making a statement. Get
+                yours now!</p>
+            <button><a href="/shop/{{id}}">Shop</a></button>
+        </div>
+    </div>
+</body>
+<script>
+    // JavaScript for automatic carousel movement
+    const carousel = document.querySelector('.carousel');
+    let direction = 1;
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.carousel-item');
+
+    function moveCarousel() {
+        currentIndex += direction;
+        if (currentIndex >= slides.length) {
+            currentIndex = 0;
+        } else if (currentIndex < 0) {
+            currentIndex = slides.length - 1;
+        }
+        const offset = -currentIndex * 100;
+        carousel.style.transform = `translateX(${offset}%)`;
+    }
+
+    setInterval(moveCarousel, 2000); // Adjust 
+
+    $(document).ready(function () {
+    $("#navbtn").click(function () {
+      $(".slidediv").slideToggle(800);
+      $(".slidediv").css("display:block")
+    });
+  });
+
+</script>
+
+</html>
